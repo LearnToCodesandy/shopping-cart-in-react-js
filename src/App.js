@@ -71,7 +71,7 @@ export default function App() {
     setModalState(true);
     setTimeout(() => {
       setModalState(false);
-    }, 1500);
+    }, 1250);
   };
 
   const handleClick = () => {
