@@ -76,7 +76,8 @@ export default function App() {
     <div className="container">
       <h1>Shopping Cart</h1>
       <p>
-        Total Price : <b>${totalPrice}</b>
+        Total Price :{" "}
+        <b>${Math.round((totalPrice + Number.EPSILON) * 100) / 100}</b>
       </p>
       <div className="shopping-cart-container">
         {items.map((item) => {
@@ -91,7 +92,10 @@ export default function App() {
         })}
         <button className="btn" onClick={handleTotalPrice}>
           <span className="span-text">Check Out</span>
-          <span>Total Price : ${totalPrice}</span>
+          <span>
+            Total Price : $
+            {Math.round((totalPrice + Number.EPSILON) * 100) / 100}
+          </span>
         </button>
       </div>
     </div>
