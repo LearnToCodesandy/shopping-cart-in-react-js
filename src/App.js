@@ -39,6 +39,7 @@ import data from "./data.js";
 export default function App() {
   const [items, setItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [modalState, setModalState] = useState(false);
 
   //  handlers
 
@@ -64,6 +65,18 @@ export default function App() {
         total_price + Number(item.count) * Number(item.price)).toFixed(3)
     );
     setTotalPrice(total_price);
+  };
+
+  const handleModal = () => {
+    setModalState(true);
+    setTimeout(() => {
+      setModalState(false);
+    }, 1500);
+  };
+
+  const handleClick = () => {
+    handleTotalPrice();
+    handleModal();
   };
 
   // useeffect
@@ -93,13 +106,16 @@ export default function App() {
             />
           );
         })}
-        <button className="btn" onClick={handleTotalPrice}>
+        <button className="btn" onClick={handleClick}>
           <span className="span-text">Check Out</span>
           <span>
             Total Price : $
             {Math.round((totalPrice + Number.EPSILON) * 100) / 100}
           </span>
         </button>
+      </div>
+      <div className={modalState ? "modal" : "modal display-hide"}>
+        <p className="modal-text">Order successful!!!</p>
       </div>
     </div>
   );
