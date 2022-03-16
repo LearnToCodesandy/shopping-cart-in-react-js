@@ -41,11 +41,14 @@ export default function App() {
   const [totalPrice, setTotalPrice] = useState(0);
 
   //  handlers
+
   const handleDeleteItem = (index) => {
     const latest_items = items.filter((item) => {
       if (item._id !== index) return item;
     });
     setItems(latest_items);
+    setMessage("Successfully deleted!!!!");
+    handleModal();
   };
 
   const handleCountChange = (changedCount, id) => {
